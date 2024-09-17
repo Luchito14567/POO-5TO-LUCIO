@@ -1,0 +1,7 @@
+C:\xampp\htdocs\POO 5TO LUCIO\bin\Debug\POO 5TO LUCIO.exe.config
+C:\xampp\htdocs\POO 5TO LUCIO\bin\Debug\POO 5TO LUCIO.exe
+C:\xampp\htdocs\POO 5TO LUCIO\bin\Debug\POO 5TO LUCIO.pdb
+C:\xampp\htdocs\POO 5TO LUCIO\obj\Debug\POO 5TO LUCIO.csproj.AssemblyReference.cache
+C:\xampp\htdocs\POO 5TO LUCIO\obj\Debug\POO 5TO LUCIO.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\POO 5TO LUCIO\obj\Debug\POO 5TO LUCIO.exe
+C:\xampp\htdocs\POO 5TO LUCIO\obj\Debug\POO 5TO LUCIO.pdb
