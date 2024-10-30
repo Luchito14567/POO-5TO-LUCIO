@@ -61,11 +61,10 @@ namespace POO_5TO_LUCIO
             public Direccion Direccion { get; set; }
             public List<Persona> Habitantes { get; set; }
 
-            public Casa(int capacidad, string colorExterior, Direccion direccion)
+            public Casa(int capacidad, string colorExterior)
             {
                 Capacidad = capacidad;
                 ColorExterior = colorExterior;
-                Direccion = direccion;
                 Habitantes = new List<Persona>();
             }
 
@@ -197,8 +196,7 @@ namespace POO_5TO_LUCIO
             public string Puesto { get; set; }
             public decimal Salario { get; set; }
 
-            public Empleado(string nombre, string apellido, int edad, string puesto, decimal salario)
-                : base(nombre, apellido, edad)
+            public Empleado(string nombre, string apellido, int edad, string puesto, decimal salario): base(nombre, apellido, edad)
             {
                 Puesto = puesto;
                 Salario = salario;
@@ -210,12 +208,8 @@ namespace POO_5TO_LUCIO
                 {
                     Salario += Salario * porcentaje / 100;
                 }
-                else
-                {
-                    Console.WriteLine("El porcentaje debe ser positivo.");
-                }
             }
-        }
+        }   
         public class Estudiante : Persona
         {
             public string Carrera { get; set; }
@@ -305,85 +299,65 @@ namespace POO_5TO_LUCIO
         {
             {
                 // Crear personas
-                Persona persona1 = new Persona("Juan", "Pérez", 25);
+                Persona persona1 = new Persona("Juan", "Pérez", 20);
 
                 // Mostrar presentación de personas
                 persona1.Presentarse();
-
+                
                 // Verificar mayoría de edad
                 Console.WriteLine($"¿{persona1.Nombre} es mayor de edad? {persona1.EsMayorDeEdad()}");
+                
+               // Crear casa
+               Casa casa = new Casa(4, "Rojo");
+               casa.Habitantes.Add(persona1);
+                
+               // Describir casa
+               Console.WriteLine(casa.DescribirCasa());
+               
+               // Presentar habitantes
+               casa.PresentarHabitantes();
+               
+              // Presentar mayores de edad
+             casa.PresentarMayoresDeEdad();
+               
+             // Crear cuenta bancaria
+             CuentaBancaria cuenta = new CuentaBancaria(persona1, 1000m);
+             cuenta.Depositar(500m);
+             cuenta.Retirar(200m);
+             Console.WriteLine($"Saldo de la cuenta de {cuenta.Titular.Nombre}: {cuenta.ObtenerSaldo()}");
+ 
+             // Crear productos
+             Producto producto1 = new Producto("Laptop", 1200m, 5);
+             Producto producto2 = new Producto("Mouse", 25m, 20);
+              
+             // Mostrar información de productos
+             producto1.MostrarInformacion();
+             producto2.MostrarInformacion();
 
-                // Crear dirección
-                Direccion direccion = new Direccion("Calle Falsa", 123, "Ciudad Ficticia", "Barrio Imaginario");
+             // Ajustar precio y cantidad
+             producto1.AjustarPrecio(1100m);
+             producto2.AjustarCantidadDisponible(15);
+             producto1.MostrarInformacion();
+             producto2.MostrarInformacion();
 
-                // Crear casa
-                Casa casa = new Casa(4, "Rojo", direccion);
-                casa.Habitantes.Add(persona1);
+             // Crear carrito de compras
+             CarritoDeCompras carrito = new CarritoDeCompras();
+             carrito.AgregarProducto(producto1);
+             carrito.AgregarProducto(producto2);
 
-                // Describir casa
-                Console.WriteLine(casa.DescribirCasa());
+             // Calcular total del carrito
+             Console.WriteLine($"Total del carrito: {carrito.CalcularTotal()}");
 
-                // Presentar habitantes
-                casa.PresentarHabitantes();
+             // Crear empleado
+             Empleado empleado = new Empleado("Carlos", "López", 30, "Desarrollador", 2000m);
+             empleado.AumentarSalario(10); // Aumentar salario en un 10%
+             Console.WriteLine($"Salario del empleado después del aumento: {empleado.Salario}");
 
-                // Presentar mayores de edad
-                casa.PresentarMayoresDeEdad();
-
-                // Crear cuenta bancaria
-                CuentaBancaria cuenta = new CuentaBancaria(persona1, 1000m);
-                cuenta.Depositar(500m);
-                cuenta.Retirar(200m);
-                Console.WriteLine($"Saldo de la cuenta de {cuenta.Titular.Nombre}: {cuenta.ObtenerSaldo()}");
-
-                // Crear productos
-                Producto producto1 = new Producto("Laptop", 1200m, 5);
-                Producto producto2 = new Producto("Mouse", 25m, 20);
-
-                // Mostrar información de productos
-                producto1.MostrarInformacion();
-                producto2.MostrarInformacion();
-
-                // Ajustar precio y cantidad
-                producto1.AjustarPrecio(1100m);
-                producto2.AjustarCantidadDisponible(15);
-                producto1.MostrarInformacion();
-                producto2.MostrarInformacion();
-
-                // Crear carrito de compras
-                CarritoDeCompras carrito = new CarritoDeCompras();
-                carrito.AgregarProducto(producto1);
-                carrito.AgregarProducto(producto2);
-
-                // Calcular total del carrito
-                Console.WriteLine($"Total del carrito: {carrito.CalcularTotal()}");
-
-                // Crear empleado
-                Empleado empleado = new Empleado("Carlos", "López", 30, "Desarrollador", 2000m);
-                empleado.AumentarSalario(10); // Aumentar salario en un 10%
-                Console.WriteLine($"Salario del empleado después del aumento: {empleado.Salario}");
-
-                // Crear estudiante
-                Estudiante estudiante = new Estudiante("Laura", "Martínez", 22, "Ingeniería", 8.5m);
-                estudiante.ActualizarPromedio(9.0m);
-                Console.WriteLine($"Nuevo promedio del estudiante: {estudiante.Promedio}");
-
-                // Crear libros
-                Libro libro1 = new Libro("El Gran Gatsby", "F. Scott Fitzgerald");
-                Libro libro2 = new Libro("1984", "George Orwell");
-
-                // Crear socios
-                Socio socio1 = new Socio("Luis", "Fernández", 28);
-                Socio socio2 = new Socio("Marta", "Paz", 35);
-
-                // Crear biblioteca
-                Biblioteca biblioteca = new Biblioteca();
-                biblioteca.AgregarLibro(libro1);
-                biblioteca.AgregarLibro(libro2);
-
-                // Prestar y devolver libros
-                biblioteca.PrestarLibro(libro1, socio1);
-                biblioteca.DevolverLibro(libro1, socio1);
-
+             // Crear estudiante
+             Estudiante estudiante = new Estudiante("Laura", "Martínez", 22, "Ingeniería", 8.5m);
+             estudiante.ActualizarPromedio(9.0m);
+             Console.WriteLine($"Nuevo promedio del estudiante: {estudiante.Promedio}");
+            
                 Console.ReadKey();
             }
         }
